@@ -62,6 +62,15 @@ function git_log_from() {
     git log --pretty=oneline --abbrev-commit --max-age=`date -j -f "%Y-%m-%d" "$1" "+%s"`
 }
 
+function nbopen {
+    if test -z "$1"
+    then
+      echo "usage: nbopen [file]"
+    else
+      open /Applications/NetBeans/NetBeans\ 8.0.2.app && /Applications/NetBeans/NetBeans\ 8.0.2.app/Contents/MacOS/netbeans --open $1
+    fi
+}
+
 if ([[ -d /usr/local/Cellar/ ]])
 then
     del_path /usr/local/bin
@@ -105,31 +114,28 @@ export EDITOR=vim
     alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 # }
 
-alias jirc="ssh jyrkililja@server1.jlilja.net -t 'screen -DRUS jyrkililja-irssi'"
-alias jln1="ssh root@server1.jlilja.net -t 'byobu'"
-alias hp1="ssh jyrkililja@hp1 -t 'tmux attach || tmux'"
+#Focus Flow {
+    alias backup1.focusflow.net="ssh root@backup1.focusflow.net -t 'screen -DRUS ollityynela'"
+    alias factori="ssh root@palvelin-1.thefactori.com -t 'screen -DRUS ollityynela'"
+    alias flow1="ssh root@server.focusflow.net -t 'screen -DRUS ollityynela'"
+    alias flow2="ssh root@server.focusflow2.net -t 'screen -DRUS ollityynela'"
+    alias flow3="ssh root@server3.focusflow.net -t 'screen -DRUS ollityynela'"
+    alias flowns1="ssh root@77.86.176.114 -t 'screen -DRUS ollityynela'"
+    alias flowns2="ssh root@77.86.176.115 -t 'screen -DRUS ollityynela'"
+    alias aa1="ssh root@aa1.focusflow.net -t 'screen -DRUS ollityynela'"
+    alias git.focusflow.net="ssh root@git.focusflow.net -t 'screen -DRUS ollityynela'"
+    alias mhyp.focusflow.net="ssh root@mhyp.focusflow.net -t 'screen -DRUS ollityynela'"
+#}
 
-# Focus Flow {
-    alias backup1.focusflow.net="ssh root@backup1.focusflow.net -t 'screen -DRUS jyrkililja'"
-    alias factori="ssh root@palvelin-1.thefactori.com -t 'screen -DRUS jyrkililja'"
-    alias flow1="ssh root@server.focusflow.net -t 'screen -DRUS jyrkililja'"
-    alias flow2="ssh root@server.focusflow2.net -t 'screen -DRUS jyrkililja'"
-    alias flow3="ssh root@server3.focusflow.net -t 'screen -DRUS jyrkililja'"
-    alias flowns1="ssh root@77.86.176.114 -t 'screen -DRUS jyrkililja'"
-    alias flowns2="ssh root@77.86.176.115 -t 'screen -DRUS jyrkililja'"
-    alias aa1="ssh root@aa1.focusflow.net -t 'screen -DRUS jyrkililja'"
-    alias git.focusflow.net="ssh root@git.focusflow.net -t 'screen -DRUS jyrkililja'"
-    alias mhyp.focusflow.net="ssh root@mhyp.focusflow.net -t 'screen -DRUS jyrkililja'"
-# }
+alias tyonalla="cd ~/Documents/TYONALLA_JUURI_NYT"
 
-pre_path '/Applications/MAMP/bin/php/php5.4.10/bin'
-
+del_path "/usr/local/git/bin"
 pre_path "$HOME/.composer/vendor/bin"
-
+pre_path "/usr/local/git/bin"
 pre_path "$HOME/.rvm/bin"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 pre_path "$HOME/bin"
 
 export PATH
-
