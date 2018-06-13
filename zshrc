@@ -167,6 +167,7 @@ alias winger="finger rovaniemi@graph.no"
 
 pre_path "$HOME/.composer/vendor/bin"
 
+echo "works"
 # To enable shims and autocompletion add to your profile:
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
